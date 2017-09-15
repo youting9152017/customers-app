@@ -4,11 +4,13 @@ import com.scotttest.model.Customer;
 import com.scotttest.repository.CustomersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.validation.Valid;
 import java.util.Map;
 
 @Controller
@@ -43,10 +45,12 @@ public class CustomersController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = {"/customers"})
-    public String saveCustomer(@ModelAttribute Customer customer) {
-        customersRepository.save(customer);
-        return "redirect:/";
+    public String saveCustomer(@Valid @ModelAttribute Customer customer, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "customers/customerDetails";
+        } else {
+            customersRepository.save(customer);
+            return "redirect:/";
+        }
     }
-
-
 }

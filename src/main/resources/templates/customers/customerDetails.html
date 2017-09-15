@@ -26,14 +26,14 @@
 
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="/customers">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/reports/sales">Reports</a>
                         </li>
                     </ul>
-                    <form class="form-inline my-2 my-lg-0" th:action="@{/logout}" method="post">
+                    <form class="form-inline my-2 my-lg-0" th:action="@{/logout}" method="post" th:if="${#httpServletRequest.remoteUser != null}">
                         <span th:inline="text">Hi, [[${#httpServletRequest.remoteUser}]]!</span>
                         <button class="btn-link my-2 my-sm-0" type="submit">Logout</button>
                     </form>
@@ -56,25 +56,37 @@
                         <div class="form-group row">
                             <label for="customerName" class="col-sm-2 col-form-label">Name</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="customerName" placeholder="Name"  th:field="*{name}"/>
+                                <input type="text" class="form-control" th:classappend="${#fields.hasErrors('name')}?'is-invalid':''" id="customerName" placeholder="Name"  th:field="*{name}"/>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">
+                                    Please provide valid name
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="email" class="col-sm-2 col-form-label">Email</label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control" id="email" placeholder="Email"  th:field="*{email}"/>
+                                <input type="email" class="form-control" th:classappend="${#fields.hasErrors('email')}?'is-invalid':''" id="email" placeholder="Email"  th:field="*{email}"/>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+                                    Please provide valid email
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="phone" class="col-sm-2 col-form-label">Phone</label>
                             <div class="col-sm-10">
-                                <input type="tel" class="form-control" id="phone" placeholder="Phone"  th:field="*{phone}"/>
+                                <input type="tel" class="form-control" th:classappend="${#fields.hasErrors('phone')}?'is-invalid':''" id="phone" placeholder="Phone"  th:field="*{phone}"/>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">
+                                    Please provide valid phone
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="totalSales" class="col-sm-2 col-form-label">Total Sales</label>
+                            <label for="totalSales" class="col-sm-2 col-form-label" >Total Sales</label>
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="totalSales" placeholder="Total Sales"  th:field="*{totalSales}"/>
+                                <input type="number" class="form-control" th:classappend="${#fields.hasErrors('totalSales')}?'is-invalid':''" id="totalSales" placeholder="Total Sales"  th:field="*{totalSales}"/>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('totalSales')}" th:errors="*{totalSales}">
+                                    Please provide valid sales number
+                                </div>
                             </div>
                         </div>
 

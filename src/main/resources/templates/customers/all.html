@@ -26,14 +26,14 @@
 
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="/customers">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/reports/sales">Reports</a>
                         </li>
                     </ul>
-                    <form class="form-inline my-2 my-lg-0" th:action="@{/logout}" method="post">
+                    <form class="form-inline my-2 my-lg-0" th:action="@{/logout}" method="post" th:if="${#httpServletRequest.remoteUser != null}">
                         <span th:inline="text">Hi, [[${#httpServletRequest.remoteUser}]]!</span>
                         <button class="btn-link my-2 my-sm-0" type="submit">Logout</button>
                     </form>
@@ -68,9 +68,5 @@
                 </div>
             </div>
         </div>
-
-
-
-
     </body>
 </html>
