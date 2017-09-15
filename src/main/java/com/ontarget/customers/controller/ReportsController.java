@@ -15,12 +15,12 @@ public class ReportsController {
     @Autowired
     private CustomersRepository customersRepository;
 
-    @RequestMapping("sellers")
+    @RequestMapping("sales")
     public String topSellersReport(Map<String, Object> model) {
-        List<Customer> sellersTop = customersRepository.findTopSellers(5);
+        List<Customer> sellersTop = customersRepository.findTopBySales(5);
 
         model.put("customers", sellersTop);
 
-        return "reports/topSellers";
+        return "reports/topSales";
     }
 }

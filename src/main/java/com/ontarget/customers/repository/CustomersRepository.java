@@ -10,7 +10,7 @@ import java.util.List;
 public interface CustomersRepository extends CrudRepository<Customer, Long> {
     List<Customer> findAllByOrderByTotalSalesDesc(Pageable pageable);
 
-    default List<Customer> findTopSellers(int numOfRecords) {
+    default List<Customer> findTopBySales(int numOfRecords) {
         return findAllByOrderByTotalSalesDesc(new PageRequest(0, numOfRecords));
     }
 }
