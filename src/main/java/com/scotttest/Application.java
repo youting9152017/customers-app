@@ -1,7 +1,7 @@
-package com.ontarget.customers;
+package com.scotttest;
 
-import com.ontarget.customers.model.Customer;
-import com.ontarget.customers.repository.CustomersRepository;
+import com.scotttest.model.Customer;
+import com.scotttest.repository.CustomersRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

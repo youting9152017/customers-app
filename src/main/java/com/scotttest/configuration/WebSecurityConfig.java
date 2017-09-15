@@ -1,4 +1,4 @@
-package com.ontarget.customers.configuration;
+package com.scotttest.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

@@ -1,6 +1,6 @@
-package com.ontarget.customers.repository;
+package com.scotttest.repository;
 
-import com.ontarget.customers.model.Customer;
+import com.scotttest.model.Customer;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;

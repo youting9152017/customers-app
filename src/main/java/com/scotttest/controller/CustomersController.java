@@ -1,7 +1,7 @@
-package com.ontarget.customers.controller;
+package com.scotttest.controller;
 
-import com.ontarget.customers.model.Customer;
-import com.ontarget.customers.repository.CustomersRepository;
+import com.scotttest.model.Customer;
+import com.scotttest.repository.CustomersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
