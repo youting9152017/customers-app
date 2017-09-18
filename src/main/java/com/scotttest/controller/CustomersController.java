@@ -30,8 +30,10 @@ public class CustomersController {
     @RequestMapping(method = RequestMethod.GET, value = "/customers/{customerId}")
     public String showCustomerDetails(Map<String, Object> model, @PathVariable Long customerId) {
         Customer customer = customersRepository.findOne(customerId);
+        if (customer == null) {
+            throw new IllegalStateException("There are no customer with ID: " + customerId);
+        }
 
-        //TODO: null check -> error
         model.put("customer", customer);
 
         return "customers/customerDetails";
@@ -52,5 +54,12 @@ public class CustomersController {
             customersRepository.save(customer);
             return "redirect:/";
         }
+    }
+
+    @RequestMapping(value = "/customers/{customerId}/delete", method = RequestMethod.POST)
+    public String deleteCustomer(@PathVariable Long customerId) {
+        customersRepository.delete(customerId);
+
+        return "redirect:/";
     }
 }

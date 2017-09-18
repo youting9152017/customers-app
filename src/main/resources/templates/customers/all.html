@@ -51,6 +51,7 @@
                             <th>Phone</th>
                             <th>Total Sales</th>
                             <th></th>
+                            <th></th>
                         </tr>
                         <tr th:each="customer : ${customers}">
                             <td th:text="${customer.name}"></td>
@@ -59,7 +60,12 @@
                             <td th:text="${customer.totalSales}"></td>
                             <td>
                                 <a href="details.html"
-                                   th:href="@{/customers/{customerId}(customerId=${customer.id})}">edit</a>
+                                   th:href="@{/customers/{customerId}(customerId=${customer.id})}">Edit</a>
+                            </td>
+                            <td>
+                                <form th:action="@{/customers/{customerId}/delete(customerId=${customer.id})}" method="post">
+                                    <input type="submit" class="btn-link" value="Delete"/>
+                                </form>
                             </td>
                         </tr>
                     </table>
