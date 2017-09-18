@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @ControllerAdvice
 public class ExceptionController {
+
     @ExceptionHandler(Exception.class)
     public ModelAndView handleError(HttpServletRequest request, Exception e) {
         Logger.getLogger(getClass().getName()).log(Level.SEVERE, "Request: " + request.getRequestURL() + " raised " + e);
