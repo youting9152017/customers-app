@@ -23,8 +23,9 @@
                             <td th:text="${customer.phone}"></td>
                             <td th:text="${customer.totalSales}"></td>
                             <td>
-                                <a href="details.html"
-                                   th:href="@{/customers/{customerId}(customerId=${customer.id})}">Edit</a>
+                                <form th:action="@{/customers/{customerId}(customerId=${customer.id})}" method="get">
+                                    <input type="submit" class="btn-link" value="Edit"/>
+                                </form>
                             </td>
                             <td>
                                 <form th:action="@{/customers/{customerId}/delete(customerId=${customer.id})}" method="post">
