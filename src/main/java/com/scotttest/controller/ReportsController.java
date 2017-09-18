@@ -12,6 +12,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("/reports")
 public class ReportsController {
+
     @Autowired
     private CustomersRepository customersRepository;
 
