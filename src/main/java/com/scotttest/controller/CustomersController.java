@@ -4,11 +4,13 @@ import com.scotttest.model.Customer;
 import com.scotttest.repository.CustomersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.validation.Valid;
 import java.util.Map;
 
 @Controller
@@ -29,8 +31,10 @@ public class CustomersController {
     @RequestMapping(method = RequestMethod.GET, value = "/customers/{customerId}")
     public String showCustomerDetails(Map<String, Object> model, @PathVariable Long customerId) {
         Customer customer = customersRepository.findOne(customerId);
+        if (customer == null) {
+            throw new IllegalStateException("There are no customer with ID: " + customerId);
+        }
 
-        //TODO: null check -> error
         model.put("customer", customer);
 
         return "customers/customerDetails";
@@ -44,10 +48,19 @@ public class CustomersController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = {"/customers"})
-    public String saveCustomer(@ModelAttribute Customer customer) {
-        customersRepository.save(customer);
-        return "redirect:/";
+    public String saveCustomer(@Valid @ModelAttribute Customer customer, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "customers/customerDetails";
+        } else {
+            customersRepository.save(customer);
+            return "redirect:/";
+        }
     }
 
+    @RequestMapping(value = "/customers/{customerId}/delete", method = RequestMethod.POST)
+    public String deleteCustomer(@PathVariable Long customerId) {
+        customersRepository.delete(customerId);
 
+        return "redirect:/";
+    }
 }

@@ -1,9 +1,10 @@
 package com.scotttest.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
@@ -12,9 +13,25 @@ public class Customer {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
+
+    @NotNull
+    @NotBlank
+    @Column(nullable = false)
     private String name;
+
+    @NotNull
+    @NotBlank
+    @Column(nullable = false, unique = true)
     private String email;
+
+    @NotNull
+    @NotBlank
+    @Column(nullable = false)
     private String phone;
+
+    @Min(0)
+    @NotNull
+    @Column(nullable = false)
     private Long totalSales;
 
     public Customer() {

@@ -26,7 +26,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li class="nav-item">
+                        <li class="nav-item active">
                             <a class="nav-link" href="/customers">Home</a>
                         </li>
                         <li class="nav-item">
@@ -44,33 +44,9 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <table class="table">
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Total Sales</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                        <tr th:each="customer : ${customers}">
-                            <td th:text="${customer.name}"></td>
-                            <td th:text="${customer.email}"></td>
-                            <td th:text="${customer.phone}"></td>
-                            <td th:text="${customer.totalSales}"></td>
-                            <td>
-                                <a href="details.html"
-                                   th:href="@{/customers/{customerId}(customerId=${customer.id})}">Edit</a>
-                            </td>
-                            <td>
-                                <form th:action="@{/customers/{customerId}/delete(customerId=${customer.id})}" method="post">
-                                    <input type="submit" class="btn-link" value="Delete"/>
-                                </form>
-                            </td>
-                        </tr>
-                    </table>
-
-                    <a href="/customers/new">Add new customer</a>
+                    <div class="alert alert-info" role="alert">
+                        Ooooops! Something goes wrong! Please contact system administrator!
+                    </div>
                 </div>
             </div>
         </div>
