@@ -32,7 +32,7 @@ public class CustomersController {
     public String showCustomerDetails(Map<String, Object> model, @PathVariable Long customerId) {
         Customer customer = customersRepository.findOne(customerId);
         if (customer == null) {
-            throw new IllegalStateException("There are no customer with ID: " + customerId);
+            throw new IllegalArgumentException("There are no customer with ID: " + customerId);
         }
 
         model.put("customer", customer);

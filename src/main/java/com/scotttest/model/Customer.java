@@ -5,6 +5,8 @@ import org.hibernate.validator.constraints.NotBlank;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 import java.util.Objects;
 
 @Entity
@@ -21,11 +23,13 @@ public class Customer {
 
     @NotNull
     @NotBlank
+    @Pattern(regexp = "^(\\S+)@(\\S+)\\.(\\S+)$", message = "Please provide a valid e-mail")
     @Column(nullable = false, unique = true)
     private String email;
 
     @NotNull
     @NotBlank
+    @Pattern(regexp = "^^(\\d{1})\\((\\d{3})\\)(\\d{7})$$", message = "Please provide phone number in 1(123)1234567 format")
     @Column(nullable = false)
     private String phone;
 

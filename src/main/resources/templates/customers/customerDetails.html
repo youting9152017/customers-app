@@ -38,9 +38,9 @@
                         <div class="form-group row">
                             <label for="phone" class="col-sm-2 col-form-label">Phone</label>
                             <div class="col-sm-10">
-                                <input type="tel" class="form-control" th:classappend="${#fields.hasErrors('phone')}?'is-invalid':''" id="phone" placeholder="Phone"  th:field="*{phone}"/>
+                                <input type="tel" class="form-control" th:classappend="${#fields.hasErrors('phone')}?'is-invalid':''" id="phone" placeholder="Phone number"  th:field="*{phone}"/>
                                 <div class="invalid-feedback" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">
-                                    Please provide valid phone
+                                    Please provide valid phone number
                                 </div>
                             </div>
                         </div>
