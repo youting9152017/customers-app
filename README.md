@@ -1,4 +1,4 @@
-# scotttest
+# customers-app
 
 * Spring Web app
 * 1 Data Model (let's say Customer with name, email, phone number, and total sales)
