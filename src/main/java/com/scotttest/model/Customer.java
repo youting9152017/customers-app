@@ -1,19 +1,19 @@
 package com.scotttest.model;
 
-import org.hibernate.validator.constraints.NotBlank;
+import java.util.Objects;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-import java.util.Objects;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @NotNull

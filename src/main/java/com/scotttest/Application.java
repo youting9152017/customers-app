@@ -1,11 +1,12 @@
 package com.scotttest;
 
-import com.scotttest.model.Customer;
-import com.scotttest.repository.CustomersRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import com.scotttest.model.Customer;
+import com.scotttest.repository.CustomersRepository;
 
 @SpringBootApplication
 public class Application {

@@ -1,11 +1,12 @@
 package com.scotttest.repository;
 
-import com.scotttest.model.Customer;
+import java.util.List;
+
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 
-import java.util.List;
+import com.scotttest.model.Customer;
 
 public interface CustomersRepository extends CrudRepository<Customer, Long> {
 
